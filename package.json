@@ -3,15 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
-    "twitter": "^1.7.1"
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "twitter-proxy": "^2.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts start && node server.js",
+    "build": "react-scripts build && node server.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
