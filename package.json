@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
+    "http-server": "^0.11.1",
+    "npm-run-all": "^4.1.5",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -14,9 +17,13 @@
     "twitter-proxy": "^2.0.0"
   },
   "scripts": {
-    "start": "react-scripts start && node server.js",
-    "build": "react-scripts build && node server.js",
-    "test": "react-scripts test",
+    "start-react": "react-scripts start",
+    "start-twitter": "node server.js",
+    "start": "npm-run-all -p -r start-react start-twitter",
+    "build": "npm-run-all -p -r start-react start-twitter",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -27,5 +34,17 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
+    "moxios": "^0.4.0",
+    "redux-mock-store": "^1.5.3",
+    "regenerator-runtime": "^0.13.1",
+    "webpack-cli": "^3.1.2"
+  }
 }
