@@ -4,11 +4,15 @@ import { Row, Col } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { IoMdSettings } from "react-icons/io"
-import { GoChevronLeft } from "react-icons/go"
-//<GoChevronLeft />
+import { loadState } from './localstorage'
+import { TWITTER_USERS } from './constants'
 
 class Tweets extends Component {
   render() {
+    const tweetUsers = loadState('users', TWITTER_USERS)
+    const tweetColumns = tweetUsers.map(user => (
+      <TweetColumn column={ user } />
+    ))
     return (
       <div>
         <Row>
@@ -18,9 +22,7 @@ class Tweets extends Component {
           </Col>
         </Row>
         <Row>
-          <TweetColumn column="ycombinator" namespace="ycombinator" />
-          <TweetColumn column="newsycombinator" namespace="newsycombinator" />
-          <TweetColumn column="MakeSchool" namespace="MakeSchool" />
+          { tweetColumns }
         </Row>
       </div>
     )

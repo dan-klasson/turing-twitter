@@ -1,41 +1,25 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from 'react-redux'
 import store from './store'
 import Tweets from './Tweets.js'
+import TweetSettings from './TweetSettings'
 import './App.css';
-
-
-const Settings = () => <h2>Settings</h2>;
+import { loadState } from './localstorage';
 
 class App extends Component {
 
   render() {
+    const css = loadState('theme', 'blue')
     return (
       <Provider store={ store }>
         <Router>
           <div>
-            <div className="header">
+            <div className={ `header background-${ css }` }>
               Frontend Developer Challenge
             </div>
-            <div>
-            </div>
-              <nav>
-                <ul>
-                  <li>
-                    <div>
-                    </div>
-                    <div>
-                    </div>
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li>
-                    <Link to="/settings/">Settings</Link>
-                  </li>
-                </ul>
-              </nav>
-            <Route path="/" exact component={Tweets} />
-            <Route path="/settings/" component={Settings} />
+            <Route path="/" exact component={ Tweets } />
+            <Route path="/settings/" component={ TweetSettings } />
           </div>
         </Router>
       </Provider>

@@ -6,17 +6,23 @@ import PropTypes from 'prop-types'
 import Linkify from 'react-linkify'
 import { fetchTweets } from './actions/tweetActions'
 import TweetLink from './TweetLink'
+import { loadState } from './localstorage';
 
 
 class TweetColumn extends Component {
 
   componentDidMount() {
-    this.props.fetchTweets(this.props.column)
+    const numberOfTweets = loadState('count', 30)
+    console.log('numbers', numberOfTweets)
+    this.props.fetchTweets(this.props.column, numberOfTweets)
   }
 
   render() {
-    console.log(this.state)
-    const tweetItems = this.props.tweets.map(tweet => (
+    const css = loadState('theme', 'blue')
+    const { tweets, column } = this.props
+    if (this.props.tweets.items[column] === undefined) { return null }
+
+    const tweetItems = tweets.items[column].map(tweet => (
       <div key={ tweet.id }>
         <div className="box-text">
           <Linkify>{ tweet.text }</Linkify>
@@ -29,8 +35,8 @@ class TweetColumn extends Component {
     ))
     return (
       <Col lg={4} sm={12}>
-        <div className="box">
-          <div className="box-header">
+        <div className={ `box border-${ css }` }>
+          <div className={ `box-header background-${ css }` }>
             @{ this.props.column }
           </div>
           <div className="box-content">
@@ -48,7 +54,14 @@ TweetColumn.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  tweets: state.tweets.items
+  tweets: state.tweets
 })
 
-export default connect(mapStateToProps, { fetchTweets })( TweetColumn )
+const mapDispatchToProps = dispatch => ({
+  fetchTweets: (column, count) => dispatch(fetchTweets(column, count))
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)( TweetColumn )
