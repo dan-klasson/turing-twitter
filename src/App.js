@@ -5,6 +5,7 @@ import store from './store'
 import Tweets from './Tweets.js'
 import './App.css';
 
+
 const Settings = () => <h2>Settings</h2>;
 
 class App extends Component {
@@ -14,20 +15,29 @@ class App extends Component {
       <Provider store={ store }>
         <Router>
           <div>
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/settings/">Settings</Link>
-                </li>
-              </ul>
-            </nav>
+            <div className="header">
+              Frontend Developer Challenge
+            </div>
+            <div>
+            </div>
+              <nav>
+                <ul>
+                  <li>
+                    <div>
+                    </div>
+                    <div>
+                    </div>
+                    <Link to="/">Home</Link>
+                  </li>
+                  <li>
+                    <Link to="/settings/">Settings</Link>
+                  </li>
+                </ul>
+              </nav>
             <Route path="/" exact component={Tweets} />
             <Route path="/settings/" component={Settings} />
           </div>
-        </Router>     
+        </Router>
       </Provider>
     );
   }

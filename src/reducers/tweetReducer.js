@@ -11,7 +11,7 @@ export default function tweetReducer(state = initialState, action) {
       return {
         ...state,
         items: action.data
-      };
+      }
     default:
       return state;
   }

@@ -35,7 +35,7 @@ describe('Tweet Action', () => {
 
     const expectedActions = [
       { type: FETCH_TWEETS_START },
-      { type: FETCH_TWEETS_SUCCESS, payload: tweets},
+      { type: FETCH_TWEETS_SUCCESS, data: tweets},
     ]
 
     return store.dispatch(fetchTweets()).then(() => {
