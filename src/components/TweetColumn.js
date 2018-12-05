@@ -4,16 +4,15 @@ import { connect } from 'react-redux'
 import Moment from 'react-moment'
 import PropTypes from 'prop-types'
 import Linkify from 'react-linkify'
-import { fetchTweets } from './actions/tweetActions'
+import { fetchTweets } from '../actions/tweetActions'
 import TweetLink from './TweetLink'
-import { loadState } from './localstorage';
+import { loadState } from '../localstorage';
 
 
 class TweetColumn extends Component {
 
   componentDidMount() {
     const numberOfTweets = loadState('count', 30)
-    console.log('numbers', numberOfTweets)
     this.props.fetchTweets(this.props.column, numberOfTweets)
   }
 
@@ -50,7 +49,7 @@ class TweetColumn extends Component {
 
 TweetColumn.propTypes = {
   fetchTweets: PropTypes.func.isRequired,
-  tweets: PropTypes.array.isRequired
+  tweets: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({

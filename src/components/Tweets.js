@@ -4,14 +4,14 @@ import { Row, Col } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { IoMdSettings } from "react-icons/io"
-import { loadState } from './localstorage'
-import { TWITTER_USERS } from './constants'
+import { loadState } from '../localstorage'
+import { TWITTER_USERS } from '../constants'
 
 class Tweets extends Component {
   render() {
     const tweetUsers = loadState('users', TWITTER_USERS)
     const tweetColumns = tweetUsers.map(user => (
-      <TweetColumn column={ user } />
+      <TweetColumn key={ user } column={ user } />
     ))
     return (
       <div>

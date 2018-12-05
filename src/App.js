@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from 'react-redux'
 import store from './store'
-import Tweets from './Tweets.js'
-import TweetSettings from './TweetSettings'
+import Tweets from './components/Tweets.js'
+import TweetSettings from './components/TweetSettings'
 import './App.css';
 import { loadState } from './localstorage';
 

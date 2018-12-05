@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FormGroup, FormLabel, Col } from 'react-bootstrap'
-import { loadState, setState } from './localstorage'
+import { loadState, setState } from '../localstorage'
 
 class TweetSettingsNumber extends Component {
 
@@ -12,7 +12,6 @@ class TweetSettingsNumber extends Component {
   render() {
     const numbers = [30, 20, 10]
     const state = loadState('count')
-    console.log(state, '->')
     const select = numbers.map(number => (
       <option key={ number } value={ number }>{ number }</option>
     ))

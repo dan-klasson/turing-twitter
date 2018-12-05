@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 import { FormGroup, FormLabel, Col } from 'react-bootstrap'
-import { loadState, setState } from './localstorage'
+import { loadState, setState } from '../localstorage'
 
 export default class TweetSettingsTheme extends Component {
 
@@ -13,7 +13,6 @@ export default class TweetSettingsTheme extends Component {
   render() {
     const themes = ["Blue", "Green", "Gray"]
     const state = loadState('theme')
-    console.log('state', state)
     const select = themes.map(theme => (
       <option
         key={ theme }

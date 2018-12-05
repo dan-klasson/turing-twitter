@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { SortableContainer, SortableElement, arrayMove } from 'react-sortable-hoc'
 import { FormGroup, FormLabel, Col, ListGroup, ListGroupItem } from 'react-bootstrap'
-import { loadState, setState } from './localstorage'
-import { TWITTER_USERS } from './constants'
+import { loadState, setState } from '../localstorage'
+import { TWITTER_USERS } from '../constants'
 
 const SortableItem = SortableElement(({value}) =>
   <ListGroupItem>{value}</ListGroupItem>

@@ -7,7 +7,7 @@ import TweetSettingsNumber from './TweetSettingsNumber'
 import TweetSettingsTheme from './TweetSettingsTheme'
 import TweetSettingsUsers from './TweetSettingsUsers'
 import TweetSettingsDate from './TweetSettingsDate'
-import { loadState } from './localstorage';
+import { loadState } from '../localstorage';
 
 
 export default class TweetSettings extends Component {
